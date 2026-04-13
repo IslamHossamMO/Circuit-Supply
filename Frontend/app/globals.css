@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-circuit-bg: var(--color-circuit-bg);
+  --color-circuit-card: var(--color-circuit-card);
+  --color-circuit-border: var(--color-circuit-border);
+  --color-circuit-green: var(--color-circuit-green);
+  --color-circuit-green-dim: var(--color-circuit-green-dim);
+  --color-circuit-blue: var(--color-circuit-blue);
+  --color-circuit-text: var(--color-circuit-text);
+  --color-circuit-text-muted: var(--color-circuit-text-muted);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --color-circuit-bg: #ffffff;
+  --color-circuit-card: #f8fafc;
+  --color-circuit-border: #e2e8f0;
+  --color-circuit-green: #059669;
+  --color-circuit-green-dim: #05966915;
+  --color-circuit-blue: #0284c7;
+  --color-circuit-text: #0f172a;
+  --color-circuit-text-muted: #64748b;
+
+  --background: var(--color-circuit-bg);
+  --foreground: var(--color-circuit-text);
+}
+
+.dark {
+  --color-circuit-bg: #0a0b10;
+  --color-circuit-card: #12141c;
+  --color-circuit-border: #2a2f3a;
+  --color-circuit-green: #00ff9d;
+  --color-circuit-green-dim: #00ff9d20;
+  --color-circuit-blue: #00b8ff;
+  --color-circuit-text: #e0e6ed;
+  --color-circuit-text-muted: #94a3b8;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer utilities {
+  .circuit-border {
+    border: 1px solid var(--color-circuit-border);
+  }
+
+  .circuit-glow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  .dark .circuit-glow {
+    box-shadow: 0 0 10px var(--color-circuit-green-dim);
+  }
+
+  .circuit-text-glow {
+    text-shadow: none;
+  }
+
+  .dark .circuit-text-glow {
+    text-shadow: 0 0 5px var(--color-circuit-green-dim);
+  }
+
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+      linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  .dark .grid-bg {
+    background-size: 50px 50px;
+    background-image:
+      linear-gradient(to right, #2a2f3a 1px, transparent 1px),
+      linear-gradient(to bottom, #2a2f3a 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  }
+}
